@@ -64,9 +64,9 @@
 
   <div class="card">
     <h3>쿠팡 앱으로 이동합니다</h3>
-    <p>자동으로 열리지 않으면<br>아래 버튼을 눌러주세요.</p>
+    <p>해당 상품 페이지로 바로 이동합니다.<br>이동하지 않으면 아래 버튼을 눌러주세요.</p>
 
-    <button class="btn" onclick="openApp()">쿠팡 앱에서 최저가 보기</button>
+    <button class="btn" onclick="openApp()">쿠팡 앱에서 최저가 확인하기</button>
 
     <div class="guide-text">
       화면이 멈춰 있다면 우측 상단 <b>[···]</b> 누르고<br>
@@ -75,21 +75,22 @@
   </div>
 
   <script>
-    var coupangApp = "coupang://product/9749293489";
-    var coupangWeb = "https://www.coupang.com/vp/products/9749293489";
+    var targetWebUrl = "https://www.coupang.com/vp/products/9749293489";
+    // 인스타 인앱 브라우저에서 경로 유실을 방지하는 인코딩 스키마
+    var coupangApp = "coupang://open?url=" + encodeURIComponent(targetWebUrl);
 
     function openApp() {
       location.href = coupangApp;
       setTimeout(function() {
-        location.href = coupangWeb;
+        location.href = targetWebUrl;
       }, 1500);
     }
 
-    // 인앱 브라우저 진입 시 1차 자동 실행 시도
+    // 인앱 브라우저 진입 시 1차 자동 실행
     window.onload = function() {
       setTimeout(function() {
         location.href = coupangApp;
-      }, 400);
+      }, 300);
     };
   </script>
 </body>
