@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>쿠팡으로 이동 중</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: #f7f8fa;
+      text-align: center;
+      box-sizing: border-box;
+      padding: 24px;
+    }
+    .card {
+      background: #ffffff;
+      padding: 32px 24px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      max-width: 340px;
+      width: 100%;
+    }
+    h3 {
+      margin: 0 0 12px 0;
+      font-size: 18px;
+      color: #111111;
+    }
+    p {
+      margin: 0 0 24px 0;
+      font-size: 14px;
+      color: #666666;
+      line-height: 1.5;
+    }
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 16px 0;
+      background-color: #0073e9;
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 115, 233, 0.3);
+    }
+    .guide-text {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #999999;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h3>쿠팡 앱으로 이동합니다</h3>
+    <p>자동으로 열리지 않으면<br>아래 버튼을 눌러주세요.</p>
+
+    <button class="btn" onclick="openApp()">쿠팡 앱에서 최저가 보기</button>
+
+    <div class="guide-text">
+      화면이 멈춰 있다면 우측 상단 <b>[···]</b> 누르고<br>
+      <b>[Safari로 열기]</b> 또는 <b>[다른 브라우저로 열기]</b>를 선택해 주세요.
+    </div>
+  </div>
+
+  <script>
+    var coupangApp = "coupang://product/9749293489";
+    var coupangWeb = "https://www.coupang.com/vp/products/9749293489";
+
+    function openApp() {
+      location.href = coupangApp;
+      setTimeout(function() {
+        location.href = coupangWeb;
+      }, 1500);
+    }
+
+    // 인앱 브라우저 진입 시 1차 자동 실행 시도
+    window.onload = function() {
+      setTimeout(function() {
+        location.href = coupangApp;
+      }, 400);
+    };
+  </script>
+</body>
+</html>
